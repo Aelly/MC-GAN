@@ -542,13 +542,13 @@ class StackGANModel(BaseModel):
 
 
     def get_current_errors(self):
-        return OrderedDict([('G1_GAN', self.loss_G1_GAN.data[0]),
-                ('G1_L1', self.loss_G1_L1.data[0]),
-                ('G1_MSE_gt', self.loss_G1_MSE_gt.data[0]),
-                ('G1_MSE', self.loss_G1_MSE_rgb2gay.data[0]),
-                ('D1_real', self.loss_D1_real.data[0]),
-                ('D1_fake', self.loss_D1_fake.data[0]),
-                ('G_L1', self.loss_G_L1.data[0])
+        return OrderedDict([('G1_GAN', self.loss_G1_GAN.item()),
+                ('G1_L1', self.loss_G1_L1.item()),
+                ('G1_MSE_gt', self.loss_G1_MSE_gt.item()),
+                ('G1_MSE', self.loss_G1_MSE_rgb2gay.item()),
+                ('D1_real', self.loss_D1_real.item()),
+                ('D1_fake', self.loss_D1_fake.item()),
+                ('G_L1', self.loss_G_L1.item())
         ])
 
 
