@@ -46,3 +46,15 @@ To train the network you can create images from font file (.ttf or .otf) with
 python font2png.py [dir with font file] [output dir]
 ```
 You need to first create the output dir that will contain the png files.
+
+- Create the dataset that will be use to train the networkd:
+The following script will divide the images into multiple folder and create a dictionary needed by the network.
+```
+python png2pretrain.py [dir with png file] [output dir] [nb char]
+```
+"nb char" is the number of char that the network need to be able to generate (without change in the previous step it's 114)
+
+- Train Glyph Network:
+```
+./scripts/train_cGan.sh [datasetName]
+```
