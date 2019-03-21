@@ -9,7 +9,7 @@ original repo.
 
 ## Prerequisites
 
-'''
+```
 Linux or macOS
 Python 2.7
 
@@ -20,29 +20,29 @@ scikit-image
 Pillow
 numpy
 glob2
-'''
+```
 
 ## Installation
 
 Clone this repo in a separate folder (will be needed later to add the dataset)
 
-'''
+```
 mkdir FontTransfer
 cd FontTransfer
 git clone https://github.com/Aelly/MC-GAN
 cd MC-GAN
-'''
+```
 
 ## How to use
 
 - (Optional) Download our model
-'''
+```
 
-'''
+```
 
 - Create the images that will be used to train the network:
 To train the network you can create images from font file (.ttf or .otf) with
-'''
+```
 python font2png.py [dir with font file] [output dir]
-'''
+```
 You need to first create the output dir that will contain the png files.
