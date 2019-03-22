@@ -10,7 +10,7 @@ from PIL import ImageDraw
 from PIL import ImageFont
 
 def main(argv):
-    usage = 'python char2png.py [dir with png file]'
+    usage = 'python chars2png.py [dir with png file]'
 
     if len(argv) != 2:
         print(usage)

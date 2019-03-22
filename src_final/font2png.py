@@ -19,7 +19,7 @@ def main(argv):
 
     print('Creating images with ' + str(len(list_)) + ' characters')
 
-    usage = 'python ttf2dataset.py [dir with font file] [output dir]'
+    usage = 'python font2png.py [dir with font file] [output dir]'
 
     if len(argv) != 3:
         print(usage)

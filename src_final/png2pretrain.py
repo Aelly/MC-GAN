@@ -9,7 +9,7 @@ from array import array
 from decimal import Decimal
 
 def main(argv):
-    usage = 'python png2dataset.py [dir with png file] [output dir] [nb char]'
+    usage = 'python png2pretrain.py [dir with png file] [output dir] [nb char]'
 
     if len(argv) != 4:
         print(usage)
