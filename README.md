@@ -54,7 +54,6 @@ The following script will divide the images into multiple folder and create a di
 ```
 python png2pretrain.py [dir with png file] [output dir]
 ```
-"nb char" is the number of char that the network need to be able to generate (without change in the previous step it's 114)
 
 - Train Glyph Network:
 ```
@@ -70,7 +69,7 @@ make
 ./ExtractImagesFromOF [of file] [output dir]
 ```
 
-- Create the image containing all the known caracters 
+- Create the image containing all the known characters 
 ```
 python chars2png.py [dir with png files]
 ```
@@ -93,4 +92,14 @@ python png2train.py [png file]
 - Create the completed of file
 ```
 
+```
+## Changing dataset format
+
+In this fork we are generating 114 characters, in order to change that number you need to :
+- Change the list of characters to extract in font2png.py line : ???
+- Change in each scripts files in the scripts directory the following variables to the number of character:
+```
+IN_NC
+O_NC
+GRP
 ```
