@@ -30,9 +30,9 @@ def main(argv):
         sys.exit()
 
     # Create the dir for the dataset if not already exist
-    if not os.path.exists(os.path.join(dataset_path, 'Base/')):
-        print "create ", os.path.join(dataset_path, 'Base/')
-        os.mkdir(os.path.join(dataset_path, 'Base/'))
+    if not os.path.exists(os.path.join(dataset_path, 'BASE/')):
+        print "create ", os.path.join(dataset_path, 'BASE/')
+        os.mkdir(os.path.join(dataset_path, 'BASE/'))
     if not os.path.exists(os.path.join(dataset_path, 'test/')):
         print "create ", os.path.join(dataset_path, 'test/')
         os.mkdir(os.path.join(dataset_path, 'test/'))
@@ -58,7 +58,7 @@ def main(argv):
     print('Val:' + str(val_part))
 
     # Move the train image in the train dir and the rest of the image in the
-    os.rename(os.path.join(png_path, "Code-New-Roman.0.0.png"), os.path.join(dataset_path, 'Base/Code-New-Roman.0.0.png'))
+    os.rename(os.path.join(png_path, "Code-New-Roman.0.0.png"), os.path.join(dataset_path, 'BASE/Code-New-Roman.0.0.png'))
     i = 0
     j = 0
     for png_file in glob.glob(os.path.join(png_path, '*.png')):
