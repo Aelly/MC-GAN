@@ -37,10 +37,15 @@ cd MC-GAN
 
 - (Optional) Download our model
 ```
-
+./download/download_model.sh
 ```
 
 ### Train your own model
+
+- (Optional) You can download our fonts database (4 600 files) with:
+```
+./download/download_fonts.sh
+```
 
 - Create the images that will be used to train the network:
 To train the network you can create images from font file (.ttf or .otf) with
@@ -58,7 +63,6 @@ python png2pretrain.py [dir with png file] [output dir]
 - Train Glyph Network:
 ```
 ./scripts/train_cGan.sh [datasetName] [output dir]
-
 ```
 ### Complete a font
 
