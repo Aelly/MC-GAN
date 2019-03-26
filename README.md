@@ -96,10 +96,6 @@ python png2train.py [png file]
 ## Changing dataset format
 
 In this fork we are generating 114 characters, in order to change that number you need to :
-- Change the list of characters to extract in font2png.py line : ???
-- Change in each scripts files in the scripts directory the following variables to the number of character:
-```
-IN_NC
-O_NC
-GRP
-```
+- Modify the list of characters to extract in font2png.py line : ???
+- In each file in the scripts directory change the variables IN_NC O_NC and GRP to the number you want
+
