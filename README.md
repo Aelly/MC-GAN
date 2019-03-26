@@ -97,5 +97,5 @@ python png2train.py [png file]
 
 In this fork we are generating 114 characters, in order to change that number you need to :
 - Modify the list of characters to extract in font2png.py line 13
-- In each file in the scripts directory change the variables IN_NC O_NC and GRP to the number you want
+- In each file in the scripts directory change the variables IN_NC, O_NC and GRP to the number you want
 
