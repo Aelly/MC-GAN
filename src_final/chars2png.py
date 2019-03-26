@@ -9,6 +9,9 @@ from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
 
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
 def main(argv):
     usage = 'python chars2png.py [dir with png file]'
 
@@ -19,7 +22,22 @@ def main(argv):
     chars = string.ascii_letters + string.digits + string.punctuation + u'à' + u'â' + u'ç' + u'è' + u'é' + u'ê' + u'î' + u'ô' + u'ù' + u'û' + u'À' + u'Â' + u'Ç' + u'È' + u'É' + u'Ê' + u'Î' + u'Ô' + u'Ù' + u'Û'
     chars_check = ""
     image= Image.new('RGBA', (64*len(chars),64), 'white')
-    path = argv[1]
+
+    # Add the / for linux and \ for windows at the end of the dir name if not present
+    path = os.path.join(argv[1], '')
+
+    dataset_name = os.path.basename(os.path.dirname(path))
+
+    if '_' in dataset_name:
+        print("The dataset name can't contain '_' ")
+        print(usage)
+        sys.exit()
+
+    if len([filename for filename in glob.glob(os.path.join(path, '*.png'))]) < 2:
+        print("Need at least 2 png file in the image directory")
+        print(usage)
+        sys.exit()
+
     for filename in glob.glob(os.path.join(path, '*.png')):
         char_file = os.path.basename(filename).split("_",2)[0]
         if "COLON" in char_file:
