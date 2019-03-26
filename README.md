@@ -65,6 +65,8 @@ python png2pretrain.py [dir with png file] [output dir] [nb char]
 
 - Extract the font from DocCreator
 ```
+cd ExtractImagesFromOF
+make
 ./ExtractImagesFromOF [of file] [output dir]
 ```
 
