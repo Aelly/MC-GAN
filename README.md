@@ -58,7 +58,7 @@ python png2pretrain.py [dir with png file] [output dir] [nb char]
 
 - Train Glyph Network:
 ```
-./scripts/train_cGan.sh [datasetName]
+./scripts/train_cGan.sh [datasetName] [output dir]
 
 ```
 ### Complete a font
@@ -82,12 +82,12 @@ python png2train.py [png file]
 
 - Train the full model
 ```
-./scripts/train_StackGAN.sh [datasetName]
+./scripts/train_StackGAN.sh [datasetName] [model dir]
 ```
 
 - Complete the image
 ```
-./scripts/test_StackGAN [datasetName]
+./scripts/test_StackGAN [datasetName] [model dir]
 ```
 
 - Create the completed of file
