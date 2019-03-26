@@ -7,11 +7,12 @@ import pickle
 import numpy as np
 from array import array
 from decimal import Decimal
+from  PIL import Image
 
 def main(argv):
-    usage = 'python png2pretrain.py [dir with png file] [output dir] [nb char]'
+    usage = 'Usage : python png2pretrain.py [dir with png file] [output dir]'
 
-    NB_CHAR = 114
+    CHAR_SIZE = 64
 
     if len(argv) != 4:
         print(usage)
@@ -21,6 +22,7 @@ def main(argv):
     png_path = os.path.join(argv[1], '')
     dataset_path = os.path.join(argv[2], '')
 
+    # Check if input and output are dir
     if not os.path.isdir(dataset_path):
         print('output dir is not a directory')
         print(usage)
@@ -48,6 +50,7 @@ def main(argv):
         print "create ", os.path.join(dataset_path, 'val/')
         os.mkdir(os.path.join(dataset_path, 'val/'))
 
+    # Get the number of png file in the dataset
     nb_png = len([name for name in os.listdir(png_path) if name.endswith(".png")])
     print(str(nb_png) + ' images in png dir')
 
@@ -59,7 +62,7 @@ def main(argv):
     print('Test: ' + str(test_part))
     print('Val:' + str(val_part))
 
-    # Move the train image in the train dir and the rest of the image in the
+    # Split the images in the dataset directory
     os.rename(os.path.join(png_path, "Code-New-Roman.0.0.png"), os.path.join(dataset_path, 'BASE/Code-New-Roman.0.0.png'))
     i = 0
     j = 0
@@ -74,11 +77,16 @@ def main(argv):
             os.rename(png_file, os.path.join(dataset_path, 'test/' + fn))
         i = i + 1
 
-    # Create the dict pickle
+    # Calculate the number of char in image (width / CHAR_SIZE)
+    img = Image.open(os.path.join(png_path, "Code-New-Roman.0.0.png"))
+    width, height = img.size
+    nb_char = int(width / CHAR_SIZE)
+
+    # Create the dictionary pickle
     dict = {}
     for png_font in glob.glob(os.path.join(dataset_path + 'test/', '*.png')):
         font_name = os.path.basename(png_font)
-        random_array = np.array(random.sample(range(0,NB_CHAR), NB_CHAR))
+        random_array = np.array(random.sample(range(0,nb_char), nb_char))
         dict[font_name] = random_array
 
     pickle.dump(dict, open(os.path.join(dataset_path, 'test_dict/' + 'dict.pkl'), "wb"))
