@@ -11,6 +11,8 @@ from decimal import Decimal
 def main(argv):
     usage = 'python png2pretrain.py [dir with png file] [output dir] [nb char]'
 
+    NB_CHAR = 114
+
     if len(argv) != 4:
         print(usage)
         sys.exit()
@@ -76,7 +78,7 @@ def main(argv):
     dict = {}
     for png_font in glob.glob(os.path.join(dataset_path + 'test/', '*.png')):
         font_name = os.path.basename(png_font)
-        random_array = np.array(random.sample(range(0,int(argv[3])), int(argv[3])))
+        random_array = np.array(random.sample(range(0,NB_CHAR), NB_CHAR))
         dict[font_name] = random_array
 
     pickle.dump(dict, open(os.path.join(dataset_path, 'test_dict/' + 'dict.pkl'), "wb"))
