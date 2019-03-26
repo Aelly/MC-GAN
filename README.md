@@ -40,6 +40,8 @@ cd MC-GAN
 
 ```
 
+### Train your own model
+
 - Create the images that will be used to train the network:
 To train the network you can create images from font file (.ttf or .otf) with
 ```
@@ -56,5 +58,39 @@ python png2pretrain.py [dir with png file] [output dir] [nb char]
 
 - Train Glyph Network:
 ```
-./scripts/train_cGan.sh [datasetName]
+./scripts/train_cGan.sh [datasetName] [output dir]
+
+```
+### Complete a font
+
+- Extract the font from DocCreator
+```
+cd ExtractImagesFromOF
+make
+./ExtractImagesFromOF [of file] [output dir]
+```
+
+- Create the image containing all the known caracters 
+```
+python chars2png.py [dir with png files]
+```
+
+- Create the training dataset
+```
+python png2train.py [png file]
+```
+
+- Train the full model
+```
+./scripts/train_StackGAN.sh [datasetName] [model dir]
+```
+
+- Complete the image
+```
+./scripts/test_StackGAN [datasetName] [model dir]
+```
+
+- Create the completed of file
+```
+
 ```
