@@ -37,7 +37,7 @@ cd MC-GAN
 
 - (Optional) Download our model
 ```
-
+./download/download_model.sh
 ```
 
 ### Train your own model
