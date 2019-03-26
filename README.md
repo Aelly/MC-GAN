@@ -40,6 +40,8 @@ cd MC-GAN
 
 ```
 
+### Train your own model
+
 - Create the images that will be used to train the network:
 To train the network you can create images from font file (.ttf or .otf) with
 ```
@@ -57,4 +59,6 @@ python png2pretrain.py [dir with png file] [output dir] [nb char]
 - Train Glyph Network:
 ```
 ./scripts/train_cGan.sh [datasetName]
+
 ```
+### Complete a font
