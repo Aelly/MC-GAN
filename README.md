@@ -62,3 +62,33 @@ python png2pretrain.py [dir with png file] [output dir] [nb char]
 
 ```
 ### Complete a font
+
+- Extract the font from DocCreator
+```
+./ExtractImagesFromOF [of file] [output dir]
+```
+
+- Create the image containing all the known caracters 
+```
+python chars2png.py [dir with png files]
+```
+
+- Create the training dataset
+```
+python png2train.py [png file]
+```
+
+- Train the full model
+```
+./scripts/train_StackGAN.sh [datasetName]
+```
+
+- Complete the image
+```
+./scripts/test_StackGAN [datasetName]
+```
+
+- Create the completed of file
+```
+
+```
