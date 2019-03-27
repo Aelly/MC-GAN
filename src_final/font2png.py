@@ -5,6 +5,7 @@ import sys
 import glob
 import string
 
+from tqdm import tqdm
 from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
@@ -48,13 +49,17 @@ def main(argv):
     font_path = os.path.join(argv[1], '')
     out_path = os.path.join(argv[2], '')
 
-    for font_file in glob.glob(os.path.join(font_path, "*.[ot]tf")):
+    # TQDM is our progression bar
+    bar = tqdm(glob.glob(os.path.join(font_path, "*.[ot]tf")))
+
+    for font_file in bar:
         font = ImageFont.truetype(font_file, CHAR_SIZE)
 
         font_name = os.path.basename(font_file).split('.')[0]
         font_name = font_name.replace("_", "-")
         font_name = font_name.replace(" ", "-")
-        print(font_name)
+        bar.set_description(font_name.ljust(30))
+        bar.refresh()
 
         image_all = Image.new("RGBA", (CHAR_SIZE*len(list_),CHAR_SIZE), "white")
         offset = 0
