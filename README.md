@@ -20,6 +20,7 @@ scikit-image
 Pillow
 numpy
 glob2
+tqdm
 ```
 
 ## Installation
