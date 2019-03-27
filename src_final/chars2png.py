@@ -15,7 +15,7 @@ sys.setdefaultencoding('utf-8')
 CHAR_SIZE = 64
 
 def main(argv):
-    usage = 'python chars2png.py [dir with png file]'
+    usage = 'python chars2png.py [PNG directory]'
 
     if len(argv) != 2:
         print(usage)
@@ -32,6 +32,11 @@ def main(argv):
 
     if '_' in dataset_name:
         print("The dataset name can't contain '_'")
+        print(usage)
+        sys.exit()
+
+    if not os.path.isdir(path):
+        print('PNG dir is not a directory')
         print(usage)
         sys.exit()
 

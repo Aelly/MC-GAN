@@ -10,11 +10,11 @@ echo "Test 2: Error: number of argument != 2 (3)"
 python ../src_final/png2train.py test-png2train.png a/
 echo -e "\n"
 
-echo "Test 3: Error: image dir is not a png file"
+echo "Test 3: Error: [PNG file] is not a png file"
 python ../src_final/png2train.py notpng.jpg
 echo -e "\n"
 
-echo "Test 4: Error: image dir is not a valid image"
+echo "Test 4: Error: [PNG file] is not a valid image"
 python ../src_final/png2train.py notvalidpng.png
 echo -e "\n"
 

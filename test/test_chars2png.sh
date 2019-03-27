@@ -10,7 +10,7 @@ echo "Test 2: Error: number of argument != 2 (3)"
 python ../src_final/chars2png.py test-manto-sample/ a/
 echo -e "\n"
 
-echo "Test 3: Error: image dir is not a directory"
+echo "Test 3: Error: PNG dir is not a directory"
 python ../src_final/chars2png.py a/
 echo -e "\n"
 
