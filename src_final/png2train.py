@@ -16,8 +16,19 @@ def main(argv):
 
     png_path = argv[1]
     png_file = os.path.basename(png_path)
-    font_img = Image.open(png_path)
 
+    if not png_path.endswith(".png"):
+        print("'" + png_file + "' is not a png")
+        print(usage)
+        sys.exit()
+
+    try:
+        font_img = Image.open(png_path)
+    except IOError:
+        print("'" + png_file + "' is not a valid image")
+        print(usage)
+        sys.exit()
+    
     # Create tree view for Full training model
     dataset_path = os.path.splitext(png_file)[0]+"/"
     if not os.path.exists(dataset_path):
