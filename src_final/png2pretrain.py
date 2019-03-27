@@ -14,19 +14,22 @@ def main(argv):
 
     CHAR_SIZE = 64
 
-    if len(argv) != 4:
+    if len(argv) != 3:
         print(usage)
         sys.exit()
 
-    # Add the / for linux and \ for windows at the end of the dir name if not present
-    png_path = os.path.join(argv[1], '')
-    dataset_path = os.path.join(argv[2], '')
+    png_path = argv[1]
+    dataset_path = argv[2]
 
     # Check if input and output are dir
-    if not os.path.isdir(dataset_path):
-        print('output dir is not a directory')
-        print(usage)
-        sys.exit()
+    if os.path.exists(dataset_path):
+        if not os.path.isdir(dataset_path):
+            print("output dir '" + dataset_path + "' is not a directory")
+            print(usage)
+            sys.exit()
+    else:
+        print ("Create output directory : " + dataset_path)
+        os.mkdir(dataset_path)
 
     if not os.path.isdir(png_path):
         print('font dir is not a directory')
@@ -51,7 +54,7 @@ def main(argv):
         os.mkdir(os.path.join(dataset_path, 'val/'))
 
     # Get the number of png file in the dataset
-    nb_png = len([name for name in os.listdir(png_path) if name.endswith(".png")])
+    nb_png = len([name for name in os.listdir(png_path) if name.endswith(".png")]) - 1
     print(str(nb_png) + ' images in png dir')
 
     train_ratio = 0.9
@@ -61,6 +64,13 @@ def main(argv):
     print('Train: ' + str(train_part))
     print('Test: ' + str(test_part))
     print('Val:' + str(val_part))
+
+
+    # Calculate the number of char in image (width / CHAR_SIZE)
+    img = Image.open(os.path.join(png_path, "Code-New-Roman.0.0.png"))
+    width, height = img.size
+    nb_char = int(width / CHAR_SIZE)
+
 
     # Split the images in the dataset directory
     os.rename(os.path.join(png_path, "Code-New-Roman.0.0.png"), os.path.join(dataset_path, 'BASE/Code-New-Roman.0.0.png'))
@@ -76,11 +86,6 @@ def main(argv):
         else:
             os.rename(png_file, os.path.join(dataset_path, 'test/' + fn))
         i = i + 1
-
-    # Calculate the number of char in image (width / CHAR_SIZE)
-    img = Image.open(os.path.join(png_path, "Code-New-Roman.0.0.png"))
-    width, height = img.size
-    nb_char = int(width / CHAR_SIZE)
 
     # Create the dictionary pickle
     dict = {}
