@@ -52,10 +52,9 @@ To train the network you can create images from font file (.ttf or .otf) with
 ```
 python font2png.py [dir with font file] [output dir]
 ```
-You need to first create the output dir that will contain the png files.
 
 - Create the dataset that will be use to train the networkd:
-The following script will divide the images into multiple folder and create a dictionary needed by the network.
+The following script will divide the images into multiple folder and create a dictionary needed by the network. In order to create the correct training dataset you need to have the Code-New-Roman image. This font cas be found in the test/test-font directory.
 ```
 python png2pretrain.py [dir with png file] [output dir]
 ```
