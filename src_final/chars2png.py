@@ -4,6 +4,7 @@ import os
 import sys
 import glob
 import string
+import json
 
 from PIL import Image
 from PIL import ImageDraw
@@ -21,9 +22,18 @@ def main(argv):
         print(usage)
         sys.exit()
 
-    chars = string.ascii_letters + string.digits + string.punctuation + u'à' + u'â' + u'ç' + u'è' + u'é' + u'ê' + u'î' + u'ô' + u'ù' + u'û' + u'À' + u'Â' + u'Ç' + u'È' + u'É' + u'Ê' + u'Î' + u'Ô' + u'Ù' + u'Û'
+    # Load the list of char stored in chars.json
+    listOfChars = []
+
+    json_path = os.path.join(os.path.dirname(sys.argv[0]), "chars.json")
+
+    with open(json_path) as json_data:
+        d = json.load(json_data)
+        for char in d['char']:
+            listOfChars.append(char)
+
     chars_check = ""
-    image= Image.new('RGBA', (CHAR_SIZE*len(chars), CHAR_SIZE), 'white')
+    image= Image.new('RGBA', (CHAR_SIZE*len(listOfChars), CHAR_SIZE), 'white')
 
     # Add the / for linux and \ for windows at the end of the dir name if not present
     path = os.path.join(argv[1], '')
@@ -59,8 +69,8 @@ def main(argv):
         if "SLASH" in char_file:
             char_file = '/'
         # Check if the char has already been created
-        if (char_file in chars and char_file not in chars_check):
-            pos = chars.index(char_file)
+        if (char_file in listOfChars and char_file not in chars_check):
+            pos = listOfChars.index(char_file)
             chars_check = chars_check + char_file
             tmp_image = Image.open(filename)
             width, height = tmp_image.size

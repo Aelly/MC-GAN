@@ -1,9 +1,10 @@
-# coding: utf8
+# -*- coding: utf-8 -*-
 
 import os
 import sys
 import glob
 import string
+import json
 
 from tqdm import tqdm
 from PIL import Image
@@ -13,12 +14,15 @@ from PIL import ImageFont
 CHAR_SIZE = 64
 
 def main(argv):
-    chars = string.ascii_letters + string.digits + string.punctuation + u'à' + u'â' + u'ç' + u'è' + u'é' + u'ê' + u'î' + u'ô' + u'ù'  + u'û' + u'À' + u'Â' + u'Ç' + u'È' + u'É' + u'Ê' + u'Î' + u'Ô' + u'Ù' + u'Û'
+    # Load the list of char stored in chars.json
+    listOfChars = []
 
-    list_ = []
+    json_path = os.path.join(os.path.dirname(sys.argv[0]), "chars.json")
 
-    for char in chars:
-        list_.append(char)
+    with open(json_path) as json_data:
+        d = json.load(json_data)
+        for char in d['char']:
+            listOfChars.append(char)
 
     usage = "Usage : python font2png.py [dir with font file] [output dir]"
 
@@ -44,7 +48,7 @@ def main(argv):
         print(usage)
         sys.exit()
 
-    print("Creating images with " + str(len(list_)) + " characters")
+    print("Creating images with " + str(len(listOfChars)) + " characters")
     # Add the / for linux and \ for windows at the end of the dir name if not present
     font_path = os.path.join(argv[1], '')
     out_path = os.path.join(argv[2], '')
@@ -61,10 +65,10 @@ def main(argv):
         bar.set_description(font_name.ljust(30))
         bar.refresh()
 
-        image_all = Image.new("RGBA", (CHAR_SIZE*len(list_),CHAR_SIZE), "white")
+        image_all = Image.new("RGBA", (CHAR_SIZE*len(listOfChars),CHAR_SIZE), "white")
         offset = 0
 
-        for char in chars:
+        for char in listOfChars:
             # Draw each char on its own image
             # https://stackoverflow.com/questions/43060479/how-to-get-the-font-pixel-height-using-pil-imagefont
             (width, baseline), (offset_x, offset_y) = font.font.getsize(char)
