@@ -121,3 +121,9 @@ It's possible to change the parameters of the network, you can do so for each fi
 In this fork we are generating 114 characters, in order to change that number you need to :
 - Modify the list of characters to extract in the process/chars.json
 - In each file in the scripts directory change the variables IN_NC, O_NC and GRP to the number of characters you want
+
+## Test the process programs
+
+To test our process scripts, you can go in the test directory and execute the main_test.sh script.
+You will find in the Procedure folder explanation for each test and the expected behaviour.
+To reset the directory you can execute the clean.sh script.
