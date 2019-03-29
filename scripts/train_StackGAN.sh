@@ -12,30 +12,31 @@
 #=====================================
 
 DATA=$1
-DATASET="../datasets/public_web_fonts/${DATA}/"
+MODEL_DIR=$2
+DATASET="../datasets/${DATA}/"
 experiment_dir="${DATA}_MCGAN_train"
-base_dir="../datasets/Capitals64/BASE"
+base_dir="../datasets/${MODEL_DIR}/BASE"
 NAME="${experiment_dir}"
 MODEL=StackGAN
 MODEL_G=resnet_6blocks
 MODEL_D=n_layers
 n_layers_D=1
 NORM=batch
-IN_NC=26
-O_NC=26
+IN_NC=114
+O_NC=114
 IN_NC_1=3
 O_NC_1=3
-GRP=26
+GRP=114
 PRENET=2_layers
 LR=0.002
-FINESIZE=64
-LOADSIZE=64
+FINESIZE=48
+LOADSIZE=48
 LAM_A=300
 LAM_C=10
 NITER=400
 NITERD=300
-BATCHSIZE=15
-EPOCH=400
+BATCHSIZE=1
+EPOCH=600
 EPOCH1=$(($NITER+$NITERD))
 CUDA_ID=0
 
@@ -51,10 +52,10 @@ fi
 # =======================================
 ##COPY pretrained network from its corresponding directory
 # =======================================
-model_1_pretrained="./checkpoints/GlyphNet_pretrain" 
-if [ ! -f "./checkpoints/${experiment_dir}/400_net_G.pth" ]; then
-    cp "${model_1_pretrained}/400_net_G.pth" "./checkpoints/${experiment_dir}/"
-    cp "${model_1_pretrained}/400_net_G_3d.pth" "./checkpoints/${experiment_dir}/"
+model_1_pretrained="./checkpoints/${MODEL_DIR}" 
+if [ ! -f "./checkpoints/${experiment_dir}/${EPOCH}_net_G.pth" ]; then
+    cp "${model_1_pretrained}/${EPOCH}_net_G.pth" "./checkpoints/${experiment_dir}/"
+    cp "${model_1_pretrained}/${EPOCH}_net_G_3d.pth" "./checkpoints/${experiment_dir}/"
 fi
 
 

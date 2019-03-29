@@ -13,7 +13,7 @@
 
 DATA=$1
 DATASET="../datasets/${DATA}/"
-experiment_dir=$2 #"GlyphNet_pretrain"
+experiment_dir=$2 
 MODEL=cGAN
 MODEL_G=resnet_6blocks
 MODEL_D=n_layers
@@ -26,10 +26,10 @@ PRENET=2_layers
 FINESIZE=64
 LOADSIZE=64
 LAM_A=100
-NITER=150
-NITERD=50
+NITER=500
+NITERD=100
 BATCHSIZE=72
-EPOCH=200 #test at which epoch?
+EPOCH=600 #test at which epoch?
 CUDA_ID=0
 
 if [ ! -d "./checkpoints/${experiment_dir}" ]; then
