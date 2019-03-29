@@ -55,7 +55,7 @@ To train the network you can create images from font file (.ttf or .otf) with
 python process/font2png.py [dir with font file] [output dir]
 ```
 
-- Create the dataset that will be use to train the networkd:
+- Create the dataset that will be use to train the network :
 The following script will divide the images into multiple folder and create a dictionary needed by the network. In order to create the correct training dataset you need to have the Code-New-Roman image. This font can be found in our dataset or in the test/test-font directory.
 ```
 python process/png2pretrain.py [dir with png file] [output dir]
@@ -111,7 +111,7 @@ The resulting directory must be placed in the datasets directory.
 ## Changing training settings
  
 It's possible to change the parameters of the network, you can do so for each file in the scripts directory :
-- BATCHSIZE is the number of images you process at once, 72 fit on a 8Gb GPU but if you can you should increase it
+- BATCHSIZE is the number of images you process at once, the current number fit on a 8Gb GPU but if you can you should increase it
 - NITER is the number of epoch you do before reducing the learning rate
 - NITER_D is the number of epoch you do after reducing the learning rate
 - LOADSIZE and FINESIZE are the size of each letter you process and produce, only 48x48 images fit on a 8Gb GPU but if you can you should increase it to 64x64
