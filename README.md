@@ -37,17 +37,14 @@ cd MC-GAN
 
 ## How to use
 
-- (Optional) Download our model
-```
-./download/download_model.sh
-```
+- (Optional) Download our model (first version)
+http://www.mediafire.com/file/03bsjb5u8au95uh/200_net_G.pth/file
+http://www.mediafire.com/file/zo7srld08tuol5q/200_net_G_3d.pth/file
 
 ### Train your own model
 
-- (Optional) You can download our fonts database (4 600 files) with:
-```
-./download/download_fonts.sh
-```
+- (Optional) You can download our fonts database (4 600 files) at this link:
+http://www.mediafire.com/file/b5cfkh8wxvhwdxh/font.zip/file
 
 - Create the images that will be used to train the network:
 To train the network you can create images from font file (.ttf or .otf) with
