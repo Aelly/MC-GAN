@@ -43,7 +43,7 @@ http://www.mediafire.com/file/zo7srld08tuol5q/200_net_G_3d.pth/file
 
 ### Train your own model
 
-- (Optional) You can download our fonts database (4 600 files) at this link:
+- (Optional) You can download our fonts database (4 600 files) at this link:  
 http://www.mediafire.com/file/b5cfkh8wxvhwdxh/font.zip/file
 
 - Create the images that will be used to train the network:
