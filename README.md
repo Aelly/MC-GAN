@@ -37,9 +37,9 @@ cd MC-GAN
 
 ## How to use
 
-- (Optional) Download our model (first version)  
-http://www.mediafire.com/file/03bsjb5u8au95uh/200_net_G.pth/file  
-http://www.mediafire.com/file/zo7srld08tuol5q/200_net_G_3d.pth/file  
+- (Optional) Download our model (trained with ~4400 font during 600 epochs)
+http://www.mediafire.com/file/br9y306du7vcd94/600_net_G.pth/file  
+http://www.mediafire.com/file/bcnce6v5i8tqs0s/600_net_G_3d.pth/file  
 
 ### Train your own model
 
